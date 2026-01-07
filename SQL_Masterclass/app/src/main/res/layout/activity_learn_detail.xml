@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#F5F9FF"
+    android:fitsSystemWindows="true">
+
+    <!-- TOP BAR (UNCHANGED) -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="56dp"
+        android:background="#1565C0"
+        android:gravity="center_vertical"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
+        android:elevation="4dp">
+
+        <Button
+            android:id="@+id/btnMenu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="☰ Topics"
+            android:textSize="14sp"
+            android:backgroundTint="#42A5F5"
+            android:textColor="#FFFFFF"
+            android:minHeight="48dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Learn SQL"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF"
+            android:layout_marginStart="15dp"/>
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <!-- TITLE -->
+            <TextView
+                android:id="@+id/tvDetailTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:text="SELECT Statement"
+                android:textColor="#1565C0"
+                android:textSize="28sp"
+                android:textStyle="bold" />
+
+            <!-- CONCEPT CARD (UNCHANGED) -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="3dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="20dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:text="📘 Concept"
+                        android:textColor="#FF9800"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvDetailDesc"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:lineSpacingExtra="6dp"
+                        android:text="Detailed explanation goes here..."
+                        android:textColor="#37474F"
+                        android:textSize="16sp" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- EXAMPLE OUTPUT HEADING -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:text="📊 Example Data Result"
+                android:textColor="#1565C0"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <!-- ✅ FIXED TABLE -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="2dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <!-- HEADER ROW (DARK BLUE) -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:background="#0D47A1"
+                        android:padding="10dp">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="ID"
+                            android:textStyle="bold"
+                            android:textColor="#FFFFFF"/>
+
+                        <View
+                            android:layout_width="1.5dp"
+                            android:layout_height="match_parent"
+                            android:background="#FFFFFF"/>
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="2"
+                            android:text="Name"
+                            android:textStyle="bold"
+                            android:textColor="#FFFFFF"/>
+
+                        <View
+                            android:layout_width="1.5dp"
+                            android:layout_height="match_parent"
+                            android:background="#FFFFFF"/>
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="2"
+                            android:text="City"
+                            android:textStyle="bold"
+                            android:textColor="#FFFFFF"/>
+                    </LinearLayout>
+
+                    <!-- HORIZONTAL LINE -->
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1.5dp"
+                        android:background="#1565C0"/>
+
+                    <!-- CONTENT AREA (WHITE) -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#FFFFFF"
+                        android:padding="10dp">
+
+                        <!-- DATA FROM BACKEND -->
+                        <TextView
+                            android:id="@+id/tvExampleTables"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textColor="#1565C0"
+                            android:textSize="14sp"
+                            android:fontFamily="monospace"/>
+                    </LinearLayout>
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- SQL SYNTAX (UNCHANGED) -->
+            <!-- SQL SYNTAX -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="💻 SQL Syntax"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="#0D47A1"
+                android:layout_marginBottom="8dp"/>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="8dp"
+                app:cardBackgroundColor="#1E2A38"
+                android:layout_marginBottom="20dp">
+
+                <TextView
+                    android:id="@+id/tvDetailCode"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="16dp"
+                    android:textColor="#FFFFFF"
+                    android:textSize="15sp"
+                    android:fontFamily="monospace"/>
+            </androidx.cardview.widget.CardView>
+
+            <Button
+                android:id="@+id/btnTryIt"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:text="🚀  Try it in Playground"
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:backgroundTint="#FB8C00"/>
+
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
