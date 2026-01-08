@@ -99,25 +99,29 @@ public class AboutActivity extends AppCompatActivity {
 
     // --- EMAIL LOGIC ---
     private void sendEmail() {
-        String recipient = "support@example.com";
-        String subject = "SQL Masterclass Feedback";
+        String recipient = "sqlmasterclass05@gmail.com";
+        String subject = "SQL Masterclass Support";
 
-        Intent appIntent = new Intent(Intent.ACTION_SENDTO);
-        appIntent.setData(Uri.parse("mailto:"));
-        appIntent.putExtra(Intent.EXTRA_EMAIL, new String[]{recipient});
-        appIntent.putExtra(Intent.EXTRA_SUBJECT, subject);
-        appIntent.setPackage("com.google.android.gm");
+        // Try Gmail app
+        Intent gmailIntent = new Intent(Intent.ACTION_SENDTO);
+        gmailIntent.setData(Uri.parse("mailto:" + recipient));
+        gmailIntent.putExtra(Intent.EXTRA_EMAIL, new String[]{recipient});
+        gmailIntent.putExtra(Intent.EXTRA_SUBJECT, subject);
+        gmailIntent.setPackage("com.google.android.gm");
 
-        if (appIntent.resolveActivity(getPackageManager()) != null) {
-            startActivity(appIntent);
+        if (gmailIntent.resolveActivity(getPackageManager()) != null) {
+            startActivity(gmailIntent);
         } else {
+            // Fallback: Open browser Gmail compose
             try {
-                String url = "https://mail.google.com/mail/?view=cm&fs=1&to=" + recipient + "&su=" + Uri.encode(subject);
+                String url = "https://mail.google.com/mail/?view=cm&fs=1&to="
+                        + recipient + "&su=" + Uri.encode(subject);
                 Intent webIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
                 startActivity(webIntent);
             } catch (Exception e) {
-                Toast.makeText(this, "Could not open Email or Browser", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "No email app or browser found!", Toast.LENGTH_SHORT).show();
             }
         }
     }
+
 }
