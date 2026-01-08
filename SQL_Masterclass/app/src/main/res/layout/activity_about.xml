@@ -136,8 +136,8 @@
                     android:gravity="center_vertical">
 
                     <ImageView
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
+                        android:layout_width="65dp"
+                        android:layout_height="65dp"
                         android:layout_marginEnd="12dp"
                         android:scaleType="centerCrop"
                         android:src="@drawable/dev_nildeepsinh" />
@@ -192,8 +192,8 @@
                     android:gravity="center_vertical">
 
                     <ImageView
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
+                        android:layout_width="65dp"
+                        android:layout_height="65dp"
                         android:src="@drawable/dev_vrinda"
                         android:background="@drawable/circle_bg"
                         android:scaleType="centerCrop"
@@ -263,23 +263,47 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="horizontal"
+                android:padding="20dp"
+                android:gravity="center_vertical"
+                android:background="?attr/selectableItemBackground">
 
-                <TextView
-                    android:id="@+id/btnContactEmail"
-                    android:layout_width="match_parent"
+                <!-- EMAIL ICON -->
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@android:drawable/ic_dialog_email"
+                    android:tint="#FFFFFF"
+                    android:layout_marginEnd="12dp"/>
+
+                <!-- TEXT BLOCK (COLUMN) -->
+                <LinearLayout
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:padding="20dp"
-                    android:text="  Contact Us via Email"
-                    android:textColor="#FFFFFF"
-                    android:textStyle="bold"
-                    android:textSize="16sp"
-                    android:gravity="center_vertical"
-                    android:background="?attr/selectableItemBackground"
-                    app:drawableStartCompat="@android:drawable/ic_dialog_email"
-                    app:drawableTint="#FFFFFF" />
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/btnContactEmail"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Contact Us via Email"
+                        android:textColor="#FFFFFF"
+                        android:textStyle="bold"
+                        android:textSize="16sp"/>
+
+                    <TextView
+                        android:id="@+id/tvEmailAddress"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="sqlmasterclass05@gmail.com"
+                        android:textColor="#E3F2FD"
+                        android:textSize="14sp"
+                        android:layout_marginTop="4dp"/>
+                </LinearLayout>
 
             </LinearLayout>
+
         </androidx.cardview.widget.CardView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

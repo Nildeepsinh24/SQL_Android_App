@@ -98,39 +98,38 @@ public class AboutActivity extends AppCompatActivity {
     }
 
     // --- EMAIL LOGIC ---
+    // --- EMAIL LOGIC ---
     private void sendEmail() {
-        String email = "sqlmasterclass05@gmail.com";
-        String subject = "SQL Masterclass Support";
+        String recipient = "sqlmasterclass05@gmail.com";
+        String gmailPackage = "com.google.android.gm";
 
-        // Try opening Gmail directly
-        Intent gmailIntent = new Intent(Intent.ACTION_SENDTO);
-        gmailIntent.setData(Uri.parse("mailto:" + email));
-        gmailIntent.putExtra(Intent.EXTRA_EMAIL, new String[]{email});
-        gmailIntent.putExtra(Intent.EXTRA_SUBJECT, subject);
-        gmailIntent.setPackage("com.google.android.gm");
+        // 1️⃣ Try Gmail App
+        if (isPackageInstalled(gmailPackage)) {
+            Intent intent = new Intent(Intent.ACTION_SENDTO);
+            intent.setData(Uri.parse("mailto:" + recipient));
+            intent.setPackage(gmailPackage);
+            startActivity(intent);
+            return;
+        }
 
-        if (gmailIntent.resolveActivity(getPackageManager()) != null) {
-            startActivity(gmailIntent);
-        } else {
-            // Otherwise open email chooser
-            Intent chooserIntent = new Intent(Intent.ACTION_SENDTO);
-            chooserIntent.setData(Uri.parse("mailto:" + email));
-            chooserIntent.putExtra(Intent.EXTRA_EMAIL, new String[]{email});
-            chooserIntent.putExtra(Intent.EXTRA_SUBJECT, subject);
-
-            if (chooserIntent.resolveActivity(getPackageManager()) != null) {
-                startActivity(Intent.createChooser(chooserIntent, "Choose Email App"));
-            } else {
-                // Fallback to browser Gmail compose page
-                try {
-                    String url = "https://mail.google.com/mail/?view=cm&fs=1&to="
-                            + email + "&su=" + Uri.encode(subject);
-                    Intent webIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
-                    startActivity(webIntent);
-                } catch (Exception e) {
-                    Toast.makeText(this, "No email or browser found!", Toast.LENGTH_SHORT).show();
-                }
-            }
+        // 2️⃣ Fallback → Gmail Web Compose (prefilled)
+        try {
+            String url = "https://mail.google.com/mail/u/0/?view=cm&fs=1&to=" + recipient;
+            Intent webIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+            startActivity(webIntent);
+        } catch (Exception e) {
+            Toast.makeText(this, "No Gmail app or browser found!", Toast.LENGTH_SHORT).show();
         }
     }
+
+
+    private boolean isPackageInstalled(String packageName) {
+        try {
+            getPackageManager().getPackageInfo(packageName, 0);
+            return true;
+        } catch (PackageManager.NameNotFoundException e) {
+            return false;
+        }
+    }
+
 }
