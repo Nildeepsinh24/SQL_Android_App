@@ -99,29 +99,38 @@ public class AboutActivity extends AppCompatActivity {
 
     // --- EMAIL LOGIC ---
     private void sendEmail() {
-        String recipient = "sqlmasterclass05@gmail.com";
+        String email = "sqlmasterclass05@gmail.com";
         String subject = "SQL Masterclass Support";
 
-        // Try Gmail app
+        // Try opening Gmail directly
         Intent gmailIntent = new Intent(Intent.ACTION_SENDTO);
-        gmailIntent.setData(Uri.parse("mailto:" + recipient));
-        gmailIntent.putExtra(Intent.EXTRA_EMAIL, new String[]{recipient});
+        gmailIntent.setData(Uri.parse("mailto:" + email));
+        gmailIntent.putExtra(Intent.EXTRA_EMAIL, new String[]{email});
         gmailIntent.putExtra(Intent.EXTRA_SUBJECT, subject);
         gmailIntent.setPackage("com.google.android.gm");
 
         if (gmailIntent.resolveActivity(getPackageManager()) != null) {
             startActivity(gmailIntent);
         } else {
-            // Fallback: Open browser Gmail compose
-            try {
-                String url = "https://mail.google.com/mail/?view=cm&fs=1&to="
-                        + recipient + "&su=" + Uri.encode(subject);
-                Intent webIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
-                startActivity(webIntent);
-            } catch (Exception e) {
-                Toast.makeText(this, "No email app or browser found!", Toast.LENGTH_SHORT).show();
+            // Otherwise open email chooser
+            Intent chooserIntent = new Intent(Intent.ACTION_SENDTO);
+            chooserIntent.setData(Uri.parse("mailto:" + email));
+            chooserIntent.putExtra(Intent.EXTRA_EMAIL, new String[]{email});
+            chooserIntent.putExtra(Intent.EXTRA_SUBJECT, subject);
+
+            if (chooserIntent.resolveActivity(getPackageManager()) != null) {
+                startActivity(Intent.createChooser(chooserIntent, "Choose Email App"));
+            } else {
+                // Fallback to browser Gmail compose page
+                try {
+                    String url = "https://mail.google.com/mail/?view=cm&fs=1&to="
+                            + email + "&su=" + Uri.encode(subject);
+                    Intent webIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+                    startActivity(webIntent);
+                } catch (Exception e) {
+                    Toast.makeText(this, "No email or browser found!", Toast.LENGTH_SHORT).show();
+                }
             }
         }
     }
-
 }

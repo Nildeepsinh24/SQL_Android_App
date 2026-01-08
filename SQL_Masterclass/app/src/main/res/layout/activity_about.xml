@@ -269,18 +269,16 @@
                     android:id="@+id/btnContactEmail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="?attr/selectableItemBackground"
-                    android:clickable="true"
-                    android:drawablePadding="16dp"
-                    android:focusable="true"
-                    android:gravity="center_vertical"
                     android:padding="20dp"
-                    android:text="Contact Us via Email"
+                    android:text="  Contact Us via Email"
                     android:textColor="#FFFFFF"
-                    android:textSize="16sp"
                     android:textStyle="bold"
+                    android:textSize="16sp"
+                    android:gravity="center_vertical"
+                    android:background="?attr/selectableItemBackground"
                     app:drawableStartCompat="@android:drawable/ic_dialog_email"
                     app:drawableTint="#FFFFFF" />
+
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
