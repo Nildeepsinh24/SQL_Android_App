@@ -159,15 +159,13 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="13sp"
-                        android:textColor="@color/white"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
                         android:text="🔗 https://github.com/Nildeepsinh24"
                         android:textSize="13sp"
-                        android:textColor="@color/white"/>
+                        android:autoLink="web"
+                        android:textColorLink="@color/white"
+                        android:textColor="@color/white"
+                        android:linksClickable="true"/>
+
 
                 </LinearLayout>
 
