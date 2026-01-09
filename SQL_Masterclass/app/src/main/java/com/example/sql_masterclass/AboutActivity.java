@@ -22,29 +22,24 @@ public class AboutActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about);
 
-        // --- 1. ENTRY ANIMATIONS (Slide Up) ---
+        // 1. Assign Views
+        CardView cardDesc = findViewById(R.id.cardDescription);
+        CardView cardTeam = findViewById(R.id.cardTeam);
+        CardView cardContact = findViewById(R.id.cardContact);
+        TextView tvVersion = findViewById(R.id.tvVersion);
+
+        // 2. Entry Animations (Slide up effect)
         animateView(findViewById(R.id.imgAppLogo), 0);
         animateView(findViewById(R.id.tvAppName), 100);
-
-        CardView cardDesc = findViewById(R.id.cardDescription);
         animateView(cardDesc, 200);
-
-        animateView(findViewById(R.id.cardTeam), 300);
-
-        CardView cardContact = findViewById(R.id.cardContact);
+        animateView(cardTeam, 300);
         animateView(cardContact, 400);
 
-
-        // --- 2. START FLUID COLOR ANIMATIONS ---
-        // Description Card: Blue -> Purple -> Indigo
+        // 3. Fluid Color Animations (Shifting backgrounds)
         startColorAnimation(cardDesc, "#1976D2", "#7B1FA2", "#311B92");
-
-        // Contact Card: Teal -> Emerald -> Cyan (Deep Ocean Theme)
         startColorAnimation(cardContact, "#00695C", "#2E7D32", "#00838F");
 
-
-        // --- 3. VERSION SETUP ---
-        TextView tvVersion = findViewById(R.id.tvVersion);
+        // 4. Version Setup
         try {
             PackageInfo pInfo = getPackageManager().getPackageInfo(getPackageName(), 0);
             tvVersion.setText("Version " + pInfo.versionName);
@@ -52,10 +47,8 @@ public class AboutActivity extends AppCompatActivity {
             tvVersion.setText("Version 1.0");
         }
 
-
-        // --- 4. EMAIL BUTTON SETUP ---
-        TextView btnEmail = findViewById(R.id.btnContactEmail);
-        btnEmail.setOnClickListener(new View.OnClickListener() {
+        // 5. Contact Click Listener (Opens Email)
+        cardContact.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 sendEmail();
@@ -63,8 +56,8 @@ public class AboutActivity extends AppCompatActivity {
         });
     }
 
-    // Helper: Slide Up + Fade In
     private void animateView(View view, long delay) {
+        if (view == null) return;
         view.setAlpha(0f);
         view.setTranslationY(100f);
         view.animate()
@@ -76,59 +69,32 @@ public class AboutActivity extends AppCompatActivity {
                 .start();
     }
 
-    // Helper: Fluid Color Pulse (Now accepts 3 custom colors)
     private void startColorAnimation(final CardView card, String hex1, String hex2, String hex3) {
-        int color1 = Color.parseColor(hex1);
-        int color2 = Color.parseColor(hex2);
-        int color3 = Color.parseColor(hex3);
+        int c1 = Color.parseColor(hex1);
+        int c2 = Color.parseColor(hex2);
+        int c3 = Color.parseColor(hex3);
 
-        // Animate: Color 1 -> Color 2 -> Color 3 -> Back to Color 1
-        ValueAnimator colorAnimation = ValueAnimator.ofObject(new ArgbEvaluator(), color1, color2, color3);
-        colorAnimation.setDuration(5000); // 5 seconds for full loop
-        colorAnimation.setRepeatCount(ValueAnimator.INFINITE);
-        colorAnimation.setRepeatMode(ValueAnimator.REVERSE);
-
-        colorAnimation.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
-            @Override
-            public void onAnimationUpdate(ValueAnimator animator) {
-                card.setCardBackgroundColor((int) animator.getAnimatedValue());
-            }
-        });
-        colorAnimation.start();
+        ValueAnimator anim = ValueAnimator.ofObject(new ArgbEvaluator(), c1, c2, c3);
+        anim.setDuration(5000);
+        anim.setRepeatCount(ValueAnimator.INFINITE);
+        anim.setRepeatMode(ValueAnimator.REVERSE);
+        anim.addUpdateListener(animation -> card.setCardBackgroundColor((int) animation.getAnimatedValue()));
+        anim.start();
     }
 
-
-    // --- EMAIL LOGIC ---
     private void sendEmail() {
-        String recipient = "sqlmasterclass05@gmail.com";
-        String gmailPackage = "com.google.android.gm";
+        String mailto = "mailto:sqlmasterclass05@gmail.com" +
+                "?subject=" + Uri.encode("Support: SQL Masterclass App") +
+                "&body=" + Uri.encode("Hello SQL Masterclass Team,\n\n");
 
-        // 1️⃣ Try Gmail App
-        if (isPackageInstalled(gmailPackage)) {
-            Intent intent = new Intent(Intent.ACTION_SENDTO);
-            intent.setData(Uri.parse("mailto:" + recipient));
-            intent.setPackage(gmailPackage);
-            startActivity(intent);
-            return;
-        }
+        Intent emailIntent = new Intent(Intent.ACTION_SENDTO);
+        emailIntent.setData(Uri.parse(mailto));
 
         try {
-            String url = "https://mail.google.com/mail/u/0/?view=cm&fs=1&to=" + recipient;
-            Intent webIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
-            startActivity(webIntent);
+            // This allows user to pick their email app
+            startActivity(Intent.createChooser(emailIntent, "Send Email..."));
         } catch (Exception e) {
-            Toast.makeText(this, "No Gmail app or browser found!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "No email app found!", Toast.LENGTH_SHORT).show();
         }
     }
-
-
-    private boolean isPackageInstalled(String packageName) {
-        try {
-            getPackageManager().getPackageInfo(packageName, 0);
-            return true;
-        } catch (PackageManager.NameNotFoundException e) {
-            return false;
-        }
-    }
-
 }
