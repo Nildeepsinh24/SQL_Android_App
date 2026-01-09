@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
@@ -35,11 +36,11 @@ public class AboutActivity extends AppCompatActivity {
         animateView(cardTeam, 300);
         animateView(cardContact, 400);
 
-        // 3. Fluid Color Animations (Shifting backgrounds)
+        // 3. Background Color Animations
         startColorAnimation(cardDesc, "#1976D2", "#7B1FA2", "#311B92");
         startColorAnimation(cardContact, "#00695C", "#2E7D32", "#00838F");
 
-        // 4. Version Setup
+        // 4. App Version
         try {
             PackageInfo pInfo = getPackageManager().getPackageInfo(getPackageName(), 0);
             tvVersion.setText("Version " + pInfo.versionName);
@@ -47,17 +48,14 @@ public class AboutActivity extends AppCompatActivity {
             tvVersion.setText("Version 1.0");
         }
 
-        // 5. Contact Click Listener (Opens Email)
-        cardContact.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                sendEmail();
-            }
-        });
+        // 5. Contact Us → Direct Email Compose
+        cardContact.setOnClickListener(v -> openEmailComposer());
     }
 
+    // ---------- Animations ----------
     private void animateView(View view, long delay) {
         if (view == null) return;
+
         view.setAlpha(0f);
         view.setTranslationY(100f);
         view.animate()
@@ -69,30 +67,36 @@ public class AboutActivity extends AppCompatActivity {
                 .start();
     }
 
-    private void startColorAnimation(final CardView card, String hex1, String hex2, String hex3) {
-        int c1 = Color.parseColor(hex1);
-        int c2 = Color.parseColor(hex2);
-        int c3 = Color.parseColor(hex3);
+    private void startColorAnimation(CardView card, String c1, String c2, String c3) {
+        int color1 = Color.parseColor(c1);
+        int color2 = Color.parseColor(c2);
+        int color3 = Color.parseColor(c3);
 
-        ValueAnimator anim = ValueAnimator.ofObject(new ArgbEvaluator(), c1, c2, c3);
-        anim.setDuration(5000);
-        anim.setRepeatCount(ValueAnimator.INFINITE);
-        anim.setRepeatMode(ValueAnimator.REVERSE);
-        anim.addUpdateListener(animation -> card.setCardBackgroundColor((int) animation.getAnimatedValue()));
-        anim.start();
+        ValueAnimator animator = ValueAnimator.ofObject(
+                new ArgbEvaluator(),
+                color1,
+                color2,
+                color3
+        );
+
+        animator.setDuration(5000);
+        animator.setRepeatCount(ValueAnimator.INFINITE);
+        animator.setRepeatMode(ValueAnimator.REVERSE);
+        animator.addUpdateListener(a ->
+                card.setCardBackgroundColor((int) a.getAnimatedValue())
+        );
+        animator.start();
     }
 
-    private void sendEmail() {
-        String mailto = "mailto:sqlmasterclass05@gmail.com" +
-                "?subject=" + Uri.encode("Support: SQL Masterclass App") +
-                "&body=" + Uri.encode("Hello SQL Masterclass Team,\n\n");
-
-        Intent emailIntent = new Intent(Intent.ACTION_SENDTO);
-        emailIntent.setData(Uri.parse(mailto));
+    // ---------- Email Composer ----------
+    private void openEmailComposer() {
+        Intent intent = new Intent(Intent.ACTION_SENDTO);
+        intent.setData(Uri.parse("mailto:sqlmasterclass05@gmail.com"));
+        intent.putExtra(Intent.EXTRA_SUBJECT, "Support: SQL Masterclass App");
+        intent.putExtra(Intent.EXTRA_TEXT, "Hello SQL Masterclass Team,\n\n");
 
         try {
-            // This allows user to pick their email app
-            startActivity(Intent.createChooser(emailIntent, "Send Email..."));
+            startActivity(Intent.createChooser(intent, "Send Email"));
         } catch (Exception e) {
             Toast.makeText(this, "No email app found!", Toast.LENGTH_SHORT).show();
         }
