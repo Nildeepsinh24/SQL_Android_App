@@ -97,7 +97,7 @@ public class AboutActivity extends AppCompatActivity {
         colorAnimation.start();
     }
 
-    // --- EMAIL LOGIC ---
+
     // --- EMAIL LOGIC ---
     private void sendEmail() {
         String recipient = "sqlmasterclass05@gmail.com";
@@ -112,7 +112,6 @@ public class AboutActivity extends AppCompatActivity {
             return;
         }
 
-        // 2️⃣ Fallback → Gmail Web Compose (prefilled)
         try {
             String url = "https://mail.google.com/mail/u/0/?view=cm&fs=1&to=" + recipient;
             Intent webIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
