@@ -7,13 +7,20 @@
         android:label="SQL Master"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
 
-        <activity android:name=".MainActivity" android:exported="true">
+        <!-- Splash Screen (LAUNCHER) -->
+        <activity
+            android:name=".SplashActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
+        <!-- Main Screen -->
+        <activity android:name=".MainActivity" />
+
+        <!-- Other Activities -->
         <activity android:name=".LearnActivity" />
         <activity android:name=".DetailActivity" />
         <activity android:name=".PracticeListActivity" />
