@@ -161,10 +161,12 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text=" GitHub: https://github.com/Nildeepsinh24/"
+                            android:text="➤ GitHub: https://github.com/Nildeepsinh24/"
                             android:textColor="#BBDEFB"
                             android:textSize="13sp"
                             android:autoLink="web"
+                            android:textColorLink="#BBDEFB"
+                            android:layout_marginTop="4dp"
                             android:drawableStart="@drawable/ic_info_small"
                             android:drawablePadding="6dp"
                             android:gravity="center_vertical"/>
@@ -172,10 +174,12 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text=" LinkedIn: https://www.linkedin.com/in/nildeepsinh-jadeja-421b2a35b/"
+                            android:text="➤ LinkedIn: https://www.linkedin.com/in/nildeepsinh-jadeja-421b2a35b/"
                             android:textColor="#BBDEFB"
                             android:textSize="13sp"
                             android:autoLink="web"
+                            android:textColorLink="#BBDEFB"
+                            android:layout_marginTop="4dp"
                             android:drawableStart="@drawable/ic_place_small"
                             android:drawablePadding="6dp"
                             android:gravity="center_vertical"/>
@@ -183,12 +187,14 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text=" Email: neeldeepsinhjadeja24@gmail.com"
+                            android:text="➤ Email: neeldeepsinhjadeja24@gmail.com"
                             android:textColor="#BBDEFB"
                             android:textSize="13sp"
                             android:autoLink="email"
+                            android:textColorLink="#BBDEFB"
                             android:drawableStart="@drawable/ic_email_small"
                             android:drawablePadding="6dp"
+                            android:layout_marginTop="3dp"
                             android:gravity="center_vertical"/>
 
 
@@ -238,10 +244,12 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text=" GitHub: https://github.com/Vrindasm99"
+                            android:text="➤ GitHub: https://github.com/Vrindasm99"
                             android:textColor="#BBDEFB"
                             android:textSize="13sp"
                             android:autoLink="web"
+                            android:layout_marginTop="4dp"
+                            android:textColorLink="#BBDEFB"
                             android:gravity="center_vertical"
                             android:drawableStart="@drawable/ic_info_small"
                             android:drawablePadding="6dp"/>
@@ -250,10 +258,12 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:gravity="center_vertical"
-                            android:text=" LinkedIn: https://www.linkedin.com/in/vrinda-mavadhiya-a42947217/"
+                            android:text="➤ LinkedIn: https://www.linkedin.com/in/vrinda-mavadhiya-a42947217/"
                             android:textColor="#BBDEFB"
                             android:textSize="13sp"
+                            android:layout_marginTop="4dp"
                             android:autoLink="web"
+                            android:textColorLink="#BBDEFB"
                             android:drawableStart="@drawable/ic_place_small"
                             android:drawablePadding="6dp"/>
 
@@ -261,10 +271,12 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:gravity="center_vertical"
-                            android:text=" Email: vrindasm2005@gmail.com"
+                            android:text="➤ Email: vrindasm2005@gmail.com"
                             android:textColor="#BBDEFB"
                             android:textSize="13sp"
+                            android:layout_marginTop="4dp"
                             android:autoLink="email"
+                            android:textColorLink="#BBDEFB"
                             android:drawableStart="@drawable/ic_email_small"
                             android:drawablePadding="6dp"/>
 
