@@ -165,8 +165,9 @@
                             android:textColor="#BBDEFB"
                             android:textSize="13sp"
                             android:autoLink="web"
-                            android:drawableStart="@android:drawable/ic_menu_share"
-                            android:drawablePadding="6dp"/>
+                            android:drawableStart="@drawable/ic_info_small"
+                            android:drawablePadding="6dp"
+                            android:gravity="center_vertical"/>
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -175,8 +176,9 @@
                             android:textColor="#BBDEFB"
                             android:textSize="13sp"
                             android:autoLink="web"
-                            android:drawableStart="@android:drawable/ic_menu_share"
-                            android:drawablePadding="6dp"/>
+                            android:drawableStart="@drawable/ic_place_small"
+                            android:drawablePadding="6dp"
+                            android:gravity="center_vertical"/>
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -185,8 +187,10 @@
                             android:textColor="#BBDEFB"
                             android:textSize="13sp"
                             android:autoLink="email"
-                            android:drawableStart="@android:drawable/ic_dialog_email"
-                            android:drawablePadding="6dp"/>
+                            android:drawableStart="@drawable/ic_email_small"
+                            android:drawablePadding="6dp"
+                            android:gravity="center_vertical"/>
+
 
 
 
@@ -240,28 +244,32 @@
                             android:textColor="#BBDEFB"
                             android:textSize="13sp"
                             android:autoLink="web"
-                            android:drawableStart="@android:drawable/ic_menu_share"
+                            android:gravity="center_vertical"
+                            android:drawableStart="@drawable/ic_info_small"
                             android:drawablePadding="6dp"/>
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
                             android:text=" LinkedIn: https://www.linkedin.com/in/vrinda-mavadhiya-a42947217/"
                             android:textColor="#BBDEFB"
                             android:textSize="13sp"
                             android:autoLink="web"
-                            android:drawableStart="@android:drawable/ic_menu_share"
+                            android:drawableStart="@drawable/ic_place_small"
                             android:drawablePadding="6dp"/>
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
                             android:text=" Email: vrindasm2005@gmail.com"
                             android:textColor="#BBDEFB"
                             android:textSize="13sp"
                             android:autoLink="email"
-                            android:drawableStart="@android:drawable/ic_dialog_email"
+                            android:drawableStart="@drawable/ic_email_small"
                             android:drawablePadding="6dp"/>
+
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
