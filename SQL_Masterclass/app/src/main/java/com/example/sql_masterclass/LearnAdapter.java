@@ -52,6 +52,8 @@ public class LearnAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
             int progress = prefs.getInt(item.title, 0);
             topicHolder.tvPercent.setText(progress + "%");
 
+            topicHolder.tvPercent.setVisibility(View.GONE);
+
             topicHolder.itemView.setOnClickListener(v -> {
                 Intent intent = new Intent(context, DetailActivity.class);
                 intent.putExtra("title", item.title);
@@ -82,3 +84,4 @@ public class LearnAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         }
     }
 }
+
