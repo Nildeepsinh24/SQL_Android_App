@@ -132,11 +132,7 @@
                         android:layout_width="48dp"
                         android:layout_height="48dp"
                         android:src="@drawable/ic_learn"
-<<<<<<< Updated upstream
-                        app:tint="#4A90E2"/>
-=======
                         app:tint="#4A90E2" />
->>>>>>> Stashed changes
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -170,11 +166,7 @@
                         android:layout_width="48dp"
                         android:layout_height="48dp"
                         android:src="@drawable/ic_quiz"
-<<<<<<< Updated upstream
-                        app:tint="#F5A623"/>
-=======
                         app:tint="#F5A623" />
->>>>>>> Stashed changes
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -208,11 +200,7 @@
                         android:layout_width="48dp"
                         android:layout_height="48dp"
                         android:src="@drawable/ic_playground"
-<<<<<<< Updated upstream
-                        app:tint="#7B61FF"/>
-=======
                         app:tint="#7B61FF" />
->>>>>>> Stashed changes
 
                     <TextView
                     android:layout_width="wrap_content"
@@ -246,11 +234,7 @@
                         android:layout_width="48dp"
                         android:layout_height="48dp"
                         android:src="@drawable/ic_info"
-<<<<<<< Updated upstream
-                        app:tint="#FF5C5C"/>
-=======
                         app:tint="#FF5C5C" />
->>>>>>> Stashed changes
 
                     <TextView
                         android:layout_width="wrap_content"

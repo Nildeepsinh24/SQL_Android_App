@@ -77,21 +77,24 @@ public class MainActivity extends AppCompatActivity {
                 .start();
     }
     private void addPressEffect(View view) {
-        view.setOnTouchListener((v, event) -> {
-            switch (event.getAction()) {
-                case MotionEvent.ACTION_DOWN:
-                    v.animate().scaleX(1.10f).scaleY(1.10f).setDuration(120).start();
-                    v.setElevation(30f);
-                    break;
+        view.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                switch (event.getAction()) {
+                    case MotionEvent.ACTION_DOWN:
+                        v.animate().scaleX(1.10f).scaleY(1.10f).setDuration(120).start();
+                        v.setElevation(30f);
+                        break;
 
-                case MotionEvent.ACTION_UP:
-                case MotionEvent.ACTION_CANCEL:
-                    v.animate().scaleX(1f).scaleY(1f).setDuration(120).start();
-                    v.setElevation(6f);
-                    break;
+                    case MotionEvent.ACTION_UP:
+                    case MotionEvent.ACTION_CANCEL:
+                        v.animate().scaleX(1f).scaleY(1f).setDuration(120).start();
+                        v.setElevation(6f);
+                        break;
 
+                }
+                return false;
             }
-            return false;
         });
     }
 
