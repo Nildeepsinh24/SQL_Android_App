@@ -71,7 +71,7 @@ public class LearnActivity extends AppCompatActivity {
                         "2. OR: displays a record if ANY of the conditions separated by OR is TRUE.\n" +
                         "3. NOT: displays a record if the condition(s) is NOT TRUE.\n\n" +
                         "Parentheses () are important when combining these to ensure the correct logic order.",
-                "SELECT * FROM Customers \nWHERE Country='Germany' \nAND (City='Berlin' OR City='Munich');"));
+                "SELECT * FROM Customers \nWHERE Country='Germany' \nAND (City='Berlin' OR City='Frankfurt');"));
 
         topicList.add(new TopicItem("LIKE (Wildcards)",
                 "The LIKE operator is used in a WHERE clause to search for a specified pattern in a column, rather than an exact match.\n\n" +

@@ -7,7 +7,7 @@
     android:background="#F5F9FF"
     android:fitsSystemWindows="true">
 
-    <!-- TOP BAR (UNCHANGED) -->
+    <!-- TOP BAR -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -56,12 +56,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
-                android:text="SELECT Statement"
                 android:textColor="#1565C0"
                 android:textSize="28sp"
                 android:textStyle="bold" />
 
-            <!-- CONCEPT CARD (UNCHANGED) -->
+            <!-- CONCEPT CARD -->
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -89,14 +88,13 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:lineSpacingExtra="6dp"
-                        android:text="Detailed explanation goes here..."
                         android:textStyle="bold"
                         android:textColor="#37474F"
                         android:textSize="16sp" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
-            <!-- EXAMPLE OUTPUT HEADING -->
+            <!-- RESULT HEADING -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -106,7 +104,7 @@
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
-            <!-- ✅ FIXED TABLE -->
+            <!-- DYNAMIC TABLE CARD -->
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -119,48 +117,14 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
-                    <!-- HEADER ROW (DARK BLUE) -->
+                    <!-- HEADER (DYNAMIC) -->
                     <LinearLayout
+                        android:id="@+id/tableHeader"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
                         android:background="#0D47A1"
-                        android:padding="10dp">
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="ID"
-                            android:textStyle="bold"
-                            android:textColor="#FFFFFF"/>
-
-                        <View
-                            android:layout_width="1.5dp"
-                            android:layout_height="match_parent"
-                            android:background="#FFFFFF"/>
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="2"
-                            android:text="Name"
-                            android:textStyle="bold"
-                            android:textColor="#FFFFFF"/>
-
-                        <View
-                            android:layout_width="1.5dp"
-                            android:layout_height="match_parent"
-                            android:background="#FFFFFF"/>
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="2"
-                            android:text="City"
-                            android:textStyle="bold"
-                            android:textColor="#FFFFFF"/>
-                    </LinearLayout>
+                        android:padding="10dp"/>
 
                     <!-- HORIZONTAL LINE -->
                     <View
@@ -168,28 +132,26 @@
                         android:layout_height="1.5dp"
                         android:background="#1565C0"/>
 
-                    <!-- CONTENT AREA (WHITE) -->
+                    <!-- CONTENT -->
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="#FFFFFF"
                         android:padding="10dp">
 
-                        <!-- DATA FROM BACKEND -->
                         <TextView
                             android:id="@+id/tvExampleTables"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:textSize="15sp"
+                            android:fontFamily="monospace"
                             android:textColor="#1565C0"
-                            android:textSize="14sp"
-                            android:fontFamily="monospace"/>
+                            android:includeFontPadding="false"/>
                     </LinearLayout>
-
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
-            <!-- SQL SYNTAX (UNCHANGED) -->
-            <!-- SQL SYNTAX -->
+            <!-- SYNTAX LABEL -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -199,12 +161,13 @@
                 android:textColor="#0D47A1"
                 android:layout_marginBottom="8dp"/>
 
+            <!-- SYNTAX CARD -->
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
                 app:cardCornerRadius="8dp"
-                app:cardBackgroundColor="#1E2A38"
-                android:layout_marginBottom="20dp">
+                app:cardBackgroundColor="#1E2A38">
 
                 <TextView
                     android:id="@+id/tvDetailCode"
@@ -216,6 +179,7 @@
                     android:fontFamily="monospace"/>
             </androidx.cardview.widget.CardView>
 
+            <!-- BUTTON -->
             <Button
                 android:id="@+id/btnTryIt"
                 android:layout_width="match_parent"
@@ -224,7 +188,6 @@
                 android:textStyle="bold"
                 android:textColor="#FFFFFF"
                 android:backgroundTint="#FB8C00"/>
-
 
         </LinearLayout>
     </ScrollView>
