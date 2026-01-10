@@ -15,72 +15,29 @@
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="280dp">
-            <RelativeLayout
-                android:id="@+id/splashOverlay"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="#1976D2">
 
-                <!-- App logo center -->
-                <ImageView
-                    android:layout_width="96dp"
-                    android:layout_height="96dp"
-                    android:layout_centerInParent="true"
-                    android:src="@mipmap/ic_launcher"/>
-
-                <!-- Powered by MU (BOTTOM) -->
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentBottom="true"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginBottom="24dp"
-                    android:orientation="vertical"
-                    android:gravity="center">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Powered by"
-                        android:textColor="#E3F2FD"
-                        android:textSize="12sp"/>
-
-
-                    <ImageView
-                        android:layout_width="100dp"
-                        android:layout_height="40dp"
-                        android:src="@drawable/mu_logo"/>
-                </LinearLayout>
-
-            </RelativeLayout>
-
-
+            <!-- Gradient top -->
             <View
                 android:layout_width="match_parent"
                 android:layout_height="240dp"
                 android:background="@drawable/bg_header_gradient" />
 
+            <!-- Header content -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
                 android:orientation="vertical">
 
-                <androidx.cardview.widget.CardView
+                <ImageView
+                    android:id="@+id/appLogo"
                     android:layout_width="96dp"
                     android:layout_height="96dp"
                     android:layout_marginBottom="12dp"
-                    app:cardCornerRadius="24dp"
-                    app:cardElevation="10dp">
-
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:padding="14dp"
-                        android:scaleType="centerInside"
-                        android:src="@mipmap/ic_launcher"
-                        android:background="#FFFFFF"/>
-                </androidx.cardview.widget.CardView>
+                    android:adjustViewBounds="true"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/app_logo"
+                    android:background="@null" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -102,20 +59,16 @@
         </FrameLayout>
 
         <!-- ================= GRID ================= -->
-
-        <!-- ================= FOOTER ================= -->
-
         <GridLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
             android:columnCount="2">
 
-
-        <!-- Learn SQL -->
+            <!-- Learn SQL -->
             <androidx.cardview.widget.CardView
-                android:layout_width="0dp"
                 android:id="@+id/btnLearn"
+                android:layout_width="0dp"
                 android:layout_height="150dp"
                 android:layout_columnWeight="1"
                 android:layout_margin="10dp"
@@ -148,8 +101,8 @@
 
             <!-- Practice Quiz -->
             <androidx.cardview.widget.CardView
-                android:layout_width="0dp"
                 android:id="@+id/btnPractice"
+                android:layout_width="0dp"
                 android:layout_height="150dp"
                 android:layout_columnWeight="1"
                 android:layout_margin="10dp"
@@ -182,8 +135,8 @@
 
             <!-- Playground -->
             <androidx.cardview.widget.CardView
-                android:layout_width="0dp"
                 android:id="@+id/btnPlayground"
+                android:layout_width="0dp"
                 android:layout_height="150dp"
                 android:layout_columnWeight="1"
                 android:layout_margin="10dp"
@@ -203,21 +156,21 @@
                         app:tint="#7B61FF" />
 
                     <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
-                    android:text="PlayGroud"
-                    android:textSize="14sp"
-                    android:textStyle="bold"
-                    android:textColor="#333333"
-                    android:gravity="center"/>
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:text="Playground"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        android:textColor="#333333"
+                        android:gravity="center"/>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
             <!-- About Us -->
             <androidx.cardview.widget.CardView
-                android:layout_width="0dp"
                 android:id="@+id/btnAbout"
+                android:layout_width="0dp"
                 android:layout_height="150dp"
                 android:layout_columnWeight="1"
                 android:layout_margin="10dp"
@@ -240,7 +193,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="12dp"
-                        android:text="About US"
+                        android:text="About Us"
                         android:textSize="14sp"
                         android:textStyle="bold"
                         android:textColor="#333333"
@@ -250,10 +203,12 @@
 
         </GridLayout>
 
+        <!-- Footer -->
         <View
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"/>
+
         <ImageView
             android:layout_width="150dp"
             android:layout_height="56dp"
@@ -261,5 +216,6 @@
             android:layout_marginTop="36dp"
             android:layout_marginBottom="28dp"
             android:src="@drawable/mu_logo" />
+
     </LinearLayout>
 </ScrollView>
