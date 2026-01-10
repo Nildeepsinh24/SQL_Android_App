@@ -8,13 +8,52 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <!-- ================= HEADER ================= -->
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="280dp">
+            <RelativeLayout
+                android:id="@+id/splashOverlay"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#1976D2">
+
+                <!-- App logo center -->
+                <ImageView
+                    android:layout_width="96dp"
+                    android:layout_height="96dp"
+                    android:layout_centerInParent="true"
+                    android:src="@mipmap/ic_launcher"/>
+
+                <!-- Powered by MU (BOTTOM) -->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="24dp"
+                    android:orientation="vertical"
+                    android:gravity="center">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Powered by"
+                        android:textColor="#E3F2FD"
+                        android:textSize="12sp"/>
+
+
+                    <ImageView
+                        android:layout_width="100dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/mu_logo"/>
+                </LinearLayout>
+
+            </RelativeLayout>
+
 
             <View
                 android:layout_width="match_parent"
@@ -93,7 +132,7 @@
                         android:layout_width="48dp"
                         android:layout_height="48dp"
                         android:src="@drawable/ic_learn"
-                        android:tint="#4A90E2" />
+                        app:tint="#4A90E2"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -127,7 +166,7 @@
                         android:layout_width="48dp"
                         android:layout_height="48dp"
                         android:src="@drawable/ic_quiz"
-                        android:tint="#F5A623"/>
+                        app:tint="#F5A623"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -161,7 +200,7 @@
                         android:layout_width="48dp"
                         android:layout_height="48dp"
                         android:src="@drawable/ic_playground"
-                        android:tint="#7B61FF"/>
+                        app:tint="#7B61FF"/>
 
                     <TextView
                     android:layout_width="wrap_content"
@@ -195,7 +234,7 @@
                         android:layout_width="48dp"
                         android:layout_height="48dp"
                         android:src="@drawable/ic_info"
-                        android:tint="#FF5C5C"/>
+                        app:tint="#FF5C5C"/>
 
                     <TextView
                         android:layout_width="wrap_content"

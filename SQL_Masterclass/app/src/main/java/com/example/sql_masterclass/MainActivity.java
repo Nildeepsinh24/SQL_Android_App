@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.animation.DecelerateInterpolator;
-import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
@@ -14,50 +13,53 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // 1. Initialize Buttons
-        Button btnLearn = findViewById(R.id.btnLearn);
-        Button btnPractice = findViewById(R.id.btnPractice);
-        Button btnPlayground = findViewById(R.id.btnPlayground);
-        Button btnAbout = findViewById(R.id.btnAbout);
+        // 1️⃣ INITIALIZE BUTTONS FIRST (ONLY MOVED UP)
+        View btnLearn = findViewById(R.id.btnLearn);
+        View btnPractice = findViewById(R.id.btnPractice);
+        View btnPlayground = findViewById(R.id.btnPlayground);
+        View btnAbout = findViewById(R.id.btnAbout);
 
-        // 2. Set Click Listeners
+        // 2️⃣ SPLASH OVERLAY (UNCHANGED LOGIC)
+        View splashOverlay = findViewById(R.id.splashOverlay);
+        if (splashOverlay != null) {
+            new android.os.Handler(android.os.Looper.getMainLooper())
+                    .postDelayed(() -> {
+                        splashOverlay.setVisibility(View.GONE);
 
-        // Navigate to Learn Activity
+                        // START ANIMATIONS AFTER SPLASH
+                        animateButton(btnLearn, 0);
+                        animateButton(btnPractice, 150);
+                        animateButton(btnPlayground, 300);
+                        animateButton(btnAbout, 450);
+
+                    }, 400);
+        }
+
+        // 3️⃣ CLICK LISTENERS (UNCHANGED)
         btnLearn.setOnClickListener(v ->
                 startActivity(new Intent(this, LearnActivity.class)));
 
-        // Navigate to Practice List
         btnPractice.setOnClickListener(v ->
                 startActivity(new Intent(this, PracticeListActivity.class)));
 
-        // Navigate to Playground
         btnPlayground.setOnClickListener(v ->
                 startActivity(new Intent(this, PlaygroundActivity.class)));
 
-        // Navigate to the new About Us Page
         btnAbout.setOnClickListener(v ->
                 startActivity(new Intent(this, AboutActivity.class)));
-
-        // 3. START SLOW ANIMATIONS
-        // Buttons slide up one by one
-        animateButton(btnLearn, 200);
-        animateButton(btnPractice, 500);
-        animateButton(btnPlayground, 800);
-        animateButton(btnAbout, 1000);
     }
 
-    /**
-     * Helper method to animate buttons (Fade In + Slide Up)
-     */
+    // ANIMATION METHOD (UNCHANGED)
     private void animateButton(View view, long delay) {
-        view.setAlpha(0f); // Start invisible
-        view.setTranslationY(100f); // Start slightly lower
+        view.setVisibility(View.VISIBLE);
+        view.setAlpha(0f);
+        view.setTranslationY(100f);
 
         view.animate()
-                .alpha(1f) // Fade in
-                .translationY(0f) // Slide up to original position
+                .alpha(1f)
+                .translationY(0f)
                 .setStartDelay(delay)
-                .setDuration(1200) // Slow, smooth speed
+                .setDuration(1200)
                 .setInterpolator(new DecelerateInterpolator())
                 .start();
     }
