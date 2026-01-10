@@ -14,11 +14,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-<<<<<<< Updated upstream
-        // 1️⃣ INITIALIZE BUTTONS FIRST (ONLY MOVED UP)
-=======
-        // 1. Initialize Buttons
->>>>>>> Stashed changes
         View btnLearn = findViewById(R.id.btnLearn);
         View btnPractice = findViewById(R.id.btnPractice);
         View btnPlayground = findViewById(R.id.btnPlayground);
@@ -52,8 +47,6 @@ public class MainActivity extends AppCompatActivity {
 
         btnAbout.setOnClickListener(v ->
                 startActivity(new Intent(this, AboutActivity.class)));
-<<<<<<< Updated upstream
-=======
 
         addPressEffect(btnLearn);
         addPressEffect(btnPractice);
@@ -67,7 +60,6 @@ public class MainActivity extends AppCompatActivity {
         animateButton(btnPractice, 500);
         animateButton(btnPlayground, 800);
         animateButton(btnAbout, 1000);
->>>>>>> Stashed changes
     }
 
     // ANIMATION METHOD (UNCHANGED)
@@ -84,10 +76,6 @@ public class MainActivity extends AppCompatActivity {
                 .setInterpolator(new DecelerateInterpolator())
                 .start();
     }
-<<<<<<< Updated upstream
-}
-=======
-
     private void addPressEffect(View view) {
         view.setOnTouchListener((v, event) -> {
             switch (event.getAction()) {
@@ -108,4 +96,3 @@ public class MainActivity extends AppCompatActivity {
     }
 
 }
->>>>>>> Stashed changes
