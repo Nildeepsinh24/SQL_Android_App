@@ -28,7 +28,6 @@ public class PlaygroundActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_playground);
 
-        // Initialize views
         etQuery = findViewById(R.id.etQuery);
         btnRun = findViewById(R.id.btnRun);
         btnClear = findViewById(R.id.btnClear);
@@ -38,7 +37,13 @@ public class PlaygroundActivity extends AppCompatActivity {
 
         dbHelper = new DatabaseHelper(this);
 
-        // Load DB structure safely in background
+        // RECEIVE QUERY FROM LearnDetailActivity (No auto-run)
+        String preFilledQuery = getIntent().getStringExtra("PRE_FILLED_QUERY");
+        if (preFilledQuery != null && !preFilledQuery.trim().isEmpty()) {
+            etQuery.setText(preFilledQuery);
+        }
+
+        // LOAD DB STRUCTURE
         new Thread(() -> {
             SQLiteDatabase db = dbHelper.getReadableDatabase();
             StringBuilder builder = new StringBuilder();
@@ -65,14 +70,14 @@ public class PlaygroundActivity extends AppCompatActivity {
             }
             tables.close();
 
-            String structure = builder.length() == 0
+            final String structure = builder.length() == 0
                     ? "⚠ No tables found"
                     : builder.toString();
 
             runOnUiThread(() -> tvDbStructure.setText(structure));
         }).start();
 
-        // Toggle DB structure
+        // TOGGLE DB STRUCTURE PANEL
         tvDbTitle.setOnClickListener(v -> {
             if (tvDbStructure.getVisibility() == View.GONE) {
                 tvDbStructure.setVisibility(View.VISIBLE);
@@ -99,6 +104,11 @@ public class PlaygroundActivity extends AppCompatActivity {
             Toast.makeText(this, "Please enter a query", Toast.LENGTH_SHORT).show();
             return;
         }
+
+        // REMOVE SQL COMMENTS (important!)
+        rawQuery = rawQuery.replaceAll("(?m)^--.*$", "");  // remove lines starting with --
+        rawQuery = rawQuery.replaceAll("(?m)^//.*$", "");  // remove lines starting with //
+        rawQuery = rawQuery.trim();
 
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         String[] statements = rawQuery.split(";");
