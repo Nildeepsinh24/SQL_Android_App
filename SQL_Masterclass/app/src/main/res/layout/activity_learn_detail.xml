@@ -81,7 +81,7 @@
                         android:layout_marginBottom="10dp"
                         android:text="📘 Concept"
                         android:textColor="#FF9800"
-                        android:textSize="14sp"
+                        android:textSize="16sp"
                         android:textStyle="bold" />
 
                     <TextView
@@ -90,6 +90,7 @@
                         android:layout_height="wrap_content"
                         android:lineSpacingExtra="6dp"
                         android:text="Detailed explanation goes here..."
+                        android:textStyle="bold"
                         android:textColor="#37474F"
                         android:textSize="16sp" />
                 </LinearLayout>
