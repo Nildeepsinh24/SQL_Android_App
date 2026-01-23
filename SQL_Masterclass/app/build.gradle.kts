@@ -3,11 +3,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.sql_masterclass"
+    namespace = "com.project_vn.sql_masterclass"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.example.sql_masterclass"
+        applicationId = "com.project_vn.sql_masterclass"
         minSdk = 24
         targetSdk = 34
         versionCode = 1

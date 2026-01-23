@@ -1,4 +1,4 @@
-package com.example.sql_masterclass;
+package com.project_vn.sql_masterclass;
 
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;

@@ -1,4 +1,4 @@
-package com.example.sql_masterclass;
+package com.project_vn.sql_masterclass;
 
 public class LearnContent {
 

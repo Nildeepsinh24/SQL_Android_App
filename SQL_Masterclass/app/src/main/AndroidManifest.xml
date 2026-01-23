@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.sql_masterclass">
+    package="com.project_vn.sql_masterclass">
 
     <application
         android:allowBackup="true"
