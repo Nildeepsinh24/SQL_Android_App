@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_marginBottom="20dp"
+    android:fitsSystemWindows="true">
+
+    <TextView
+        android:id="@+id/tvSql"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#1E2A38"
+        android:textColor="#FFFFFF"
+        android:fontFamily="monospace"
+        android:padding="14dp"
+        android:textSize="15sp"/>
+
+    <Button
+        android:id="@+id/btnTry"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Try it in Playground"
+        android:backgroundTint="#FF9800"
+        android:textColor="#FFFFFF"
+        android:layout_marginTop="8dp"/>
+</LinearLayout>

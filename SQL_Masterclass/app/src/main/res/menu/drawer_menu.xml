@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:title="SQL Basics">
+        <menu>
+            <item android:id="@+id/nav_select" android:title="SELECT" />
+            <item android:id="@+id/nav_distinct" android:title="SELECT DISTINCT" />
+            <item android:id="@+id/nav_where" android:title="WHERE" />
+            <item android:id="@+id/nav_orderby" android:title="ORDER BY" />
+            <item android:id="@+id/nav_andor" android:title="AND, OR, NOT" />
+        </menu>
+    </item>
+
+    <item android:title="Modify Data">
+        <menu>
+            <item android:id="@+id/nav_insert" android:title="INSERT INTO" />
+            <item android:id="@+id/nav_update" android:title="UPDATE" />
+            <item android:id="@+id/nav_delete" android:title="DELETE" />
+        </menu>
+    </item>
+
+    <item android:title="Advanced">
+        <menu>
+            <item android:id="@+id/nav_minmax" android:title="MIN and MAX" />
+            <item android:id="@+id/nav_count" android:title="COUNT, AVG, SUM" />
+            <item android:id="@+id/nav_like" android:title="LIKE (Wildcards)" />
+            <item android:id="@+id/nav_join" android:title="JOINS" />
+            <item android:id="@+id/nav_groupby" android:title="GROUP BY" />
+        </menu>
+    </item>
+
+    <item android:title="Database">
+        <menu>
+            <item android:id="@+id/nav_create" android:title="CREATE TABLE" />
+            <item android:id="@+id/nav_drop" android:title="DROP TABLE" />
+        </menu>
+    </item>
+
+</menu>
