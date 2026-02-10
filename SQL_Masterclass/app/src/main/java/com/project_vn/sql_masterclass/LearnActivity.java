@@ -37,21 +37,21 @@ public class LearnActivity extends AppCompatActivity {
                 "SELECT CustomerName, City FROM Customers;\n\n-- Or select everything:\nSELECT * FROM Customers;"));
 
         topicList.add(new TopicItem("SELECT DISTINCT",
-                "Inside a table, a column often contains many duplicate values. For example, a 'Country' column might list 'Germany' 50 times.\n\n" +
+                "Inside a table, a column often contains many duplicate values. For example, a 'Country' column might list 'India' 50 times.\n\n" +
                         "The SELECT DISTINCT statement is used to return only distinct (different) values. It removes duplicates from the result set, showing you a unique list.",
                 "-- This shows every country (including duplicates)\nSELECT Country FROM Customers;\n\n-- This shows each country only once\nSELECT DISTINCT Country FROM Customers;"));
 
         topicList.add(new TopicItem("WHERE Clause",
                 "The WHERE clause is used to filter records. It extracts only those records that fulfill a specified condition.\n\n" +
                         "Syntax Rules:\n" +
-                        "• Text values must be enclosed in single quotes (e.g., 'Mexico').\n" +
+                        "• Text values must be enclosed in single quotes (e.g., 'India').\n" +
                         "• Numeric values should NOT be in quotes (e.g., 500).\n\n" +
                         "Common Operators:\n" +
                         "• =  (Equal)\n" +
                         "• >  (Greater than)\n" +
                         "• <  (Less than)\n" +
                         "• <> (Not equal)",
-                "SELECT * FROM Customers \nWHERE Country = 'Mexico';\n\nSELECT * FROM Products \nWHERE Price > 20;"));
+                "SELECT * FROM Customers \nWHERE Country = 'India';\n\nSELECT * FROM Products \nWHERE Price > 20;"));
 
         topicList.add(new TopicItem("ORDER BY",
                 "The ORDER BY keyword is used to sort the result-set.\n\n" +
@@ -71,7 +71,7 @@ public class LearnActivity extends AppCompatActivity {
                         "2. OR: displays a record if ANY of the conditions separated by OR is TRUE.\n" +
                         "3. NOT: displays a record if the condition(s) is NOT TRUE.\n\n" +
                         "Parentheses () are important when combining these to ensure the correct logic order.",
-                "SELECT * FROM Customers \nWHERE Country='Germany' \nAND (City='Berlin' OR City='Frankfurt');"));
+                "SELECT * FROM Customers \nWHERE Country='India' \nAND (City='Mumbai' OR City='Delhi');"));
 
         topicList.add(new TopicItem("LIKE (Wildcards)",
                 "The LIKE operator is used in a WHERE clause to search for a specified pattern in a column, rather than an exact match.\n\n" +
@@ -79,18 +79,18 @@ public class LearnActivity extends AppCompatActivity {
                         "• The percent sign (%) represents zero, one, or multiple characters.\n" +
                         "• The underscore sign (_) represents a single character.\n\n" +
                         "Examples:\n" +
-                        "• 'a%' -> Starts with 'a'\n" +
+                        "• 'S%' -> Starts with 'S'\n" +
                         "• '%a' -> Ends with 'a'\n" +
-                        "• '%or%' -> Contains 'or' anywhere",
-                "-- Find customers whose name starts with 'A'\nSELECT * FROM Customers \nWHERE CustomerName LIKE 'a%';"));
+                        "• '%sh%' -> Contains 'sh' anywhere",
+                "-- Find customers whose name starts with 'S'\nSELECT * FROM Customers \nWHERE CustomerName LIKE 'S%';"));
 
         topicList.add(new TopicItem("IN Operator",
                 "The IN operator allows you to specify multiple values in a WHERE clause. It is essentially a shorthand for multiple 'OR' conditions.\n\n" +
                         "Instead of writing:\n" +
-                        "WHERE Country='Germany' OR Country='France' OR Country='UK'...\n\n" +
+                        "WHERE Country='India' OR Country='UK' OR Country='Singapore'...\n\n" +
                         "You can simply write:\n" +
-                        "WHERE Country IN ('Germany', 'France', 'UK').",
-                "SELECT * FROM Customers \nWHERE Country IN ('Germany', 'France', 'UK');"));
+                        "WHERE Country IN ('India', 'UK', 'Singapore').",
+                "SELECT * FROM Customers \nWHERE Country IN ('India', 'UK', 'Singapore');"));
 
         // ==========================================
         // SECTION 3: MODIFYING DATA
@@ -102,19 +102,19 @@ public class LearnActivity extends AppCompatActivity {
                         "There are two ways to write this:\n" +
                         "1. Specify both the column names and the values to be inserted (Recommended).\n" +
                         "2. If you are adding values for all columns of the table, you do not need to specify the column names in the SQL query.",
-                "INSERT INTO Customers (CustomerName, City, Country) \nVALUES ('Cardinal', 'Stavanger', 'Norway');"));
+                "INSERT INTO Customers (CustomerName, City, Country) \nVALUES ('Reddy Solutions', 'Hyderabad', 'India');"));
 
         topicList.add(new TopicItem("UPDATE",
                 "The UPDATE statement is used to modify the existing records in a table.\n\n" +
                         "⚠️ CRITICAL WARNING:\n" +
                         "Notice the WHERE clause in the example code. The WHERE clause specifies which record(s) that should be updated. If you omit the WHERE clause, ALL records in the table will be updated!",
-                "UPDATE Customers \nSET ContactName='Alfred', City='Frankfurt' \nWHERE CustomerID=1;"));
+                "UPDATE Customers \nSET ContactName='Amit Sharma', City='Pune' \nWHERE CustomerID=1;"));
 
         topicList.add(new TopicItem("DELETE",
                 "The DELETE statement is used to delete existing records in a table.\n\n" +
                         "⚠️ CRITICAL WARNING:\n" +
                         "Be very careful when deleting records! If you omit the WHERE clause, ALL records in the table will be deleted permanently!",
-                "DELETE FROM Customers \nWHERE CustomerName='Alfreds Futterkiste';"));
+                "DELETE FROM Customers \nWHERE CustomerName='Sharma Enterprises';"));
 
         // ==========================================
         // SECTION 4: AGGREGATES
@@ -128,7 +128,7 @@ public class LearnActivity extends AppCompatActivity {
                 "SELECT MIN(Price) FROM Products;\n\nSELECT MAX(Price) FROM Products;"));
 
         topicList.add(new TopicItem("COUNT, AVG, SUM",
-                "Aggregate functions perform calculations on a set of values and return a single value.\n\n" +
+                "Aggregate functions perform a calculation on a set of values and return a single value.\n\n" +
                         "• COUNT(): Returns the number of rows that match a specified criterion.\n" +
                         "• AVG(): Returns the average value of a numeric column.\n" +
                         "• SUM(): Returns the total sum of a numeric column.",

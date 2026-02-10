@@ -9,7 +9,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "ShopDB.db";
 
     // IMPORTANT: must be HIGHER than any previous version (you had 7)
-    private static final int DATABASE_VERSION = 8;
+    private static final int DATABASE_VERSION = 9;
 
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -22,6 +22,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        // Drop older tables if they exist to refresh data
+        db.execSQL("DROP TABLE IF EXISTS Customers");
+        db.execSQL("DROP TABLE IF EXISTS Orders");
+        db.execSQL("DROP TABLE IF EXISTS Products");
+        db.execSQL("DROP TABLE IF EXISTS Sales");
         createAllTables(db);
     }
 
@@ -43,11 +48,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                         "Country TEXT)"
         );
 
-        db.execSQL("INSERT OR IGNORE INTO Customers VALUES (1,'Alfreds Futterkiste','Maria Anders','Berlin','Germany')");
-        db.execSQL("INSERT OR IGNORE INTO Customers VALUES (2,'Ana Trujillo','Ana Trujillo','Mexico City','Mexico')");
-        db.execSQL("INSERT OR IGNORE INTO Customers VALUES (3,'Antonio Moreno','Antonio Moreno','Mexico City','Mexico')");
-        db.execSQL("INSERT OR IGNORE INTO Customers VALUES (4,'Around the Horn','Thomas Hardy','London','UK')");
-        db.execSQL("INSERT OR IGNORE INTO Customers VALUES (5,'Berglunds snabbköp','Christina Berglund','Luleå','Sweden')");
+        db.execSQL("INSERT OR IGNORE INTO Customers VALUES (1,'Sharma Enterprises','Rohit Sharma','Mumbai','India')");
+        db.execSQL("INSERT OR IGNORE INTO Customers VALUES (2,'Mehta Textiles','Anjali Mehta','Delhi','India')");
+        db.execSQL("INSERT OR IGNORE INTO Customers VALUES (3,'Kumar Logistics','Rajesh Kumar','Singapore City','Singapore')");
+        db.execSQL("INSERT OR IGNORE INTO Customers VALUES (4,'Singh Tech','Priya Singh','London','UK')");
+        db.execSQL("INSERT OR IGNORE INTO Customers VALUES (5,'Patel Exports','Amit Patel','Dubai','UAE')");
 
         // ORDERS
         db.execSQL(
@@ -81,7 +86,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                         "Amount INTEGER)"
         );
 
-        db.execSQL("INSERT OR IGNORE INTO Sales VALUES (1,'USA',100)");
+        db.execSQL("INSERT OR IGNORE INTO Sales VALUES (1,'India',100)");
         db.execSQL("INSERT OR IGNORE INTO Sales VALUES (2,'USA',200)");
         db.execSQL("INSERT OR IGNORE INTO Sales VALUES (3,'UK',300)");
     }

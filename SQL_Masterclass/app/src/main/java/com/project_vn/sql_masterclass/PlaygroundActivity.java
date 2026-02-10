@@ -105,6 +105,13 @@ public class PlaygroundActivity extends AppCompatActivity {
             return;
         }
 
+        if (!rawQuery.trim().endsWith(";")) {
+            etQuery.setError("Missing semicolon (;)");
+            showError("❌ Syntax Error: Query must end with a semicolon (;)");
+            Toast.makeText(this, "Query must end with a semicolon (;)", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         // REMOVE SQL COMMENTS (important!)
         rawQuery = rawQuery.replaceAll("(?m)^--.*$", "");  // remove lines starting with --
         rawQuery = rawQuery.replaceAll("(?m)^//.*$", "");  // remove lines starting with //
@@ -125,7 +132,7 @@ public class PlaygroundActivity extends AppCompatActivity {
                     showMessage("✅ Executed: " + clean);
                 }
             } catch (Exception e) {
-                showMessage("❌ " + e.getMessage());
+                showError("❌ " + e.getMessage());
             }
         }
     }
@@ -164,6 +171,17 @@ public class PlaygroundActivity extends AppCompatActivity {
         TableRow row = new TableRow(this);
         TextView tv = new TextView(this);
         tv.setText(msg);
+        tv.setPadding(20, 20, 20, 20);
+        row.addView(tv);
+        tableResult.addView(row);
+    }
+
+    private void showError(String msg) {
+        TableRow row = new TableRow(this);
+        TextView tv = new TextView(this);
+        tv.setText(msg);
+        tv.setTextColor(Color.RED);
+        tv.setTypeface(null, Typeface.BOLD);
         tv.setPadding(20, 20, 20, 20);
         row.addView(tv);
         tableResult.addView(row);

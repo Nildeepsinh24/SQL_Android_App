@@ -14,7 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 public class DetailActivity extends AppCompatActivity {
 
     LinearLayout tableHeader;
-    TextView tvTable;
+    LinearLayout tableBody;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,7 +25,7 @@ public class DetailActivity extends AppCompatActivity {
         TextView tvDesc = findViewById(R.id.tvDetailDesc);
         TextView tvCode = findViewById(R.id.tvDetailCode);
         tableHeader = findViewById(R.id.tableHeader);
-        tvTable = findViewById(R.id.tvExampleTables);
+        tableBody = findViewById(R.id.tableBody);
 
         Button btnMenu = findViewById(R.id.btnMenu);
         Button btnTryIt = findViewById(R.id.btnTryIt);
@@ -39,114 +39,103 @@ public class DetailActivity extends AppCompatActivity {
         tvCode.setText(code);
 
         tableHeader.removeAllViews();
-        StringBuilder content = new StringBuilder();
+        tableBody.removeAllViews();
 
         // ========================== LOGIC FOR EACH TOPIC ==========================
         if (title.contains("SELECT DISTINCT")) {
             addHeader("Country");
-            content.append(row("London"));
-            content.append(row("Tokyo"));
-            content.append(row("Paris"));
+            addRow("India");
+            addRow("Singapore");
+            addRow("UK");
+            addRow("UAE");
 
-        } else if (title.contains("SELECT")) {
+        } else if (title.equals("SELECT Statement")) {
             addHeader("ID", "Name", "City");
-            content.append(row("1", "Alex", "London"));
-            content.append(row("2", "Sarah", "Tokyo"));
-            content.append(row("3", "John", "Paris"));
+            addRow("1", "Rohit", "Mumbai");
+            addRow("2", "Anjali", "Delhi");
+            addRow("3", "Rajesh", "Singapore");
 
         } else if (title.contains("WHERE")) {
-            addHeader("ID", "Name", "Status");
-            content.append(row("5", "Mike", "Active"));
-            content.append(row("7", "Anna", "Active"));
-
-        } else if (title.contains("AND") || title.contains("AND, OR, NOT")) {
             addHeader("ID", "Name", "City");
-            content.append(row("1", "Alex", "London"));
-            content.append(row("3", "John", "London"));
+            addRow("4", "Priya", "London");
+            addRow("5", "Amit", "Dubai");
 
-        } else if (title.contains("OR")) {
-            addHeader("ID", "Name", "City");
-            content.append(row("2", "Sarah", "Tokyo"));
-            content.append(row("4", "Emma", "Paris"));
-
-        } else if (title.contains("NOT")) {
-            addHeader("ID", "Name", "City");
-            content.append(row("6", "Chris", "Berlin"));
-            content.append(row("8", "Laura", "Rome"));
+        } else if (title.contains("AND") || title.contains("OR")) {
+            addHeader("ID", "Name", "Country");
+            addRow("1", "Rohit", "India");
+            addRow("2", "Anjali", "India");
+            addRow("4", "Priya", "UK");
 
         } else if (title.contains("LIKE")) {
             addHeader("Customer");
-            content.append(row("Alfreds"));
-            content.append(row("Ana Trujillo"));
+            addRow("Sharma Ent.");
+            addRow("Singh Tech");
 
         } else if (title.contains("IN ")) {
             addHeader("Country");
-            content.append(row("Germany"));
-            content.append(row("France"));
-            content.append(row("UK"));
+            addRow("India");
+            addRow("Singapore");
+            addRow("UK");
 
         } else if (title.contains("INSERT")) {
             addHeader("ID", "Name", "City");
-            content.append(row("1", "Tom", "-"));
-            content.append(row("2", "Cardinal", "Stavanger"));
+            addRow("6", "New User", "Pune");
+            addRow("7", "Tech Corp", "Bangalore");
 
         } else if (title.contains("UPDATE")) {
             addHeader("ID", "Name", "City");
-            content.append(row("1", "Alfred Schmidt", "Frankfurt"));
+            addRow("1", "Rohit Sharma", "Pune");
 
         } else if (title.contains("DELETE")) {
             addHeader("ID", "Name");
-            content.append(row("2", "Maria"));
+            addRow("2", "Mehta Tex.");
 
-        } else if (title.contains("MIN")) {
+        } else if (title.contains("MIN") || title.contains("MAX")) {
             addHeader("Product", "Price");
-            content.append(row("Milk", "1.10"));
-
-        } else if (title.contains("MAX")) {
-            addHeader("Product", "Price");
-            content.append(row("Bread", "2.50"));
+            addRow("Milk", "50.00");
+            addRow("Cheese", "250.00");
+            addRow("Bread", "40.00");
 
         } else if (title.contains("COUNT")) {
             addHeader("Metric", "Value");
-            content.append(row("Total Orders", "2"));
+            addRow("Total Orders", "3");
 
-        } else if (title.contains("SUM")) {
+        } else if (title.contains("SUM") || title.contains("AVG")) {
             addHeader("Metric", "Value");
-            content.append(row("Total Amount", "300"));
-
-        } else if (title.contains("JOIN")) {
-            addHeader("OrderID", "Customer");
-            content.append(row("101", "Alex"));
-            content.append(row("102", "Sarah"));
+            addRow("Total Price", "340.00");
 
         } else if (title.contains("LEFT JOIN")) {
             addHeader("Customer", "OrderID");
-            content.append(row("Alex", "101"));
-            content.append(row("Sarah", "102"));
-            content.append(row("John", "NULL"));
+            addRow("Rohit", "101");
+            addRow("Anjali", "102");
+            addRow("Rajesh", "NULL");
+
+        } else if (title.contains("INNER JOIN")) {
+            addHeader("OrderID", "Customer");
+            addRow("101", "Rohit");
+            addRow("102", "Anjali");
 
         } else if (title.contains("GROUP")) {
             addHeader("Country", "Total");
-            content.append(row("USA", "300"));
-            content.append(row("UK", "300"));
+            addRow("India", "300");
+            addRow("UK", "150");
 
         } else if (title.contains("CREATE TABLE")) {
             addHeader("Action", "Table");
-            content.append(row("Created", "Persons"));
+            addRow("Created", "Persons");
+            addRow("Cols", "ID, Name");
 
         } else if (title.contains("DROP TABLE")) {
             addHeader("Action", "Table");
-            content.append(row("Dropped", "Persons"));
+            addRow("Dropped", "Persons");
+            addRow("Status", "Deleted");
 
         } else {
             // DEFAULT FALLBACK
             addHeader("ID", "Name", "Status");
-            content.append(row("1", "Sample", "Result"));
-            content.append(row("2", "Example", "Output"));
+            addRow("1", "Sample", "Result");
+            addRow("2", "Example", "Output");
         }
-
-        // SET DATA TO TEXTVIEW
-        tvTable.setText(content.toString());
 
         // MENU BUTTON
         btnMenu.setOnClickListener(v -> finish());
@@ -164,11 +153,12 @@ public class DetailActivity extends AppCompatActivity {
     private void addHeader(String... titles) {
         for (String title : titles) {
             TextView tv = new TextView(this);
-            tv.setText(String.format("%-15s", title));
+            tv.setText(title);
             tv.setTextColor(Color.WHITE);
             tv.setTypeface(Typeface.DEFAULT_BOLD);
             tv.setTextSize(14);
-            tv.setPadding(0, 0, 0, 0);
+            tv.setPadding(8, 16, 8, 16);
+            tv.setGravity(android.view.Gravity.CENTER_VERTICAL);
 
             LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
                     0,
@@ -180,13 +170,35 @@ public class DetailActivity extends AppCompatActivity {
         }
     }
 
-    private String row(String... cols) {
-        StringBuilder sb = new StringBuilder();
+    private void addRow(String... cols) {
+        LinearLayout rowLayout = new LinearLayout(this);
+        rowLayout.setOrientation(LinearLayout.HORIZONTAL);
+        rowLayout.setPadding(0, 0, 0, 0);
+        
         for (String col : cols) {
-            sb.append(String.format("%-15s", col));
+            TextView tv = new TextView(this);
+            tv.setText(col);
+            tv.setTextColor(Color.parseColor("#334155")); // Slate 700
+            tv.setTextSize(14);
+            tv.setPadding(8, 20, 8, 20);
+            tv.setGravity(android.view.Gravity.CENTER_VERTICAL);
+
+            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+                    0,
+                    ViewGroup.LayoutParams.WRAP_CONTENT,
+                    1
+            );
+            tv.setLayoutParams(params);
+            rowLayout.addView(tv);
         }
-        sb.append("\n");
-        return sb.toString();
+        
+        // Add a divider
+        android.view.View divider = new android.view.View(this);
+        divider.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 2));
+        divider.setBackgroundColor(Color.parseColor("#F1F5F9")); // Slate 100
+
+        tableBody.addView(rowLayout);
+        tableBody.addView(divider);
     }
 }
 
