@@ -10,7 +10,7 @@ android {
         applicationId = "com.project_vn.sql_masterclass"
         minSdk = 24
         targetSdk = 36
-        versionCode = 1
+        versionCode = 2
         versionName = "2.0"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
